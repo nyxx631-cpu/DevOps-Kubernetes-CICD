@@ -66,7 +66,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 bat """
-                    kubectl --kubeconfig="C:\\Users\\Info\\.kube\\config" set image deployment/devops-k8s-app app=${DOCKER_IMAGE}:${DOCKER_TAG} -n development
+                    kubectl --kubeconfig="C:\\ProgramData\\Jenkins\\.jenkins\\.kube\\config" set image deployment/devops-k8s-app app=${DOCKER_IMAGE}:${DOCKER_TAG} -n development
                 """
             }
         }
@@ -74,7 +74,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 bat """
-                    kubectl --kubeconfig="C:\\Users\\Info\\.kube\\config" rollout status deployment/devops-k8s-app -n development
+                    kubectl --kubeconfig="C:\\ProgramData\\Jenkins\\.jenkins\\.kube\\config" rollout status deployment/devops-k8s-app -n development
                 """
             }
         }
